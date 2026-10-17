@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, SITE_URL } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PricingSection from "@/components/PricingSection";
@@ -28,6 +28,8 @@ const productJsonLd = {
     price: plan.price,
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
+    url: `${SITE_URL}/times`,
+    priceValidUntil: "2027-10-17",
   })),
 };
 

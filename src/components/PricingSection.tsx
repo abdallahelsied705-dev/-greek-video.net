@@ -9,6 +9,7 @@ export default function PricingSection({
   headingLevel?: 1 | 2;
 }) {
   const Heading = headingLevel === 1 ? "h1" : "h2";
+  const CardHeading = headingLevel === 1 ? "h2" : "h3";
 
   return (
     <section id="times" className="border-t border-border bg-surface/40 py-20">
@@ -43,7 +44,7 @@ export default function PricingSection({
                 </span>
               )}
 
-              <h3 className="text-lg font-bold">{plan.duration}</h3>
+              <CardHeading className="text-lg font-bold">{plan.duration}</CardHeading>
 
               <div className="mt-4 flex items-end gap-1">
                 <span className="mb-1 text-2xl font-semibold text-muted">€</span>

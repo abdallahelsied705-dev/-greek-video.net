@@ -25,6 +25,7 @@ export default function BenefitsSection({
   headingLevel?: 1 | 2;
 }) {
   const Heading = headingLevel === 1 ? "h1" : "h2";
+  const CardHeading = headingLevel === 1 ? "h2" : "h3";
 
   return (
     <section id="kanalia" className="border-t border-border bg-surface/40 py-20">
@@ -54,7 +55,7 @@ export default function BenefitsSection({
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-surface-2">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mt-4 font-semibold">{b.title}</h3>
+                <CardHeading className="mt-4 font-semibold">{b.title}</CardHeading>
                 <p className="mt-2 text-sm text-muted">{b.description}</p>
               </Reveal>
             );

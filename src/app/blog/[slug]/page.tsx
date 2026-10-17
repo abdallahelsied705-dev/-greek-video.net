@@ -66,10 +66,23 @@ export default async function Page({
     },
   };
 
+  const faqJsonLd = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
   return (
     <>
       <JsonLd data={breadcrumb} />
       <JsonLd data={articleJsonLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
       <Header />
       <main id="main-content" className="flex-1 py-16">
         <article className="container-shell max-w-3xl">

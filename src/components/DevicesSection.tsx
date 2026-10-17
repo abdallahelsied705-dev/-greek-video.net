@@ -30,6 +30,7 @@ export default function DevicesSection({
   headingLevel?: 1 | 2;
 }) {
   const Heading = headingLevel === 1 ? "h1" : "h2";
+  const CardHeading = headingLevel === 1 ? "h2" : "h3";
 
   return (
     <section id="egkatastasi" className="border-t border-border py-20">
@@ -86,7 +87,7 @@ export default function DevicesSection({
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-surface-2">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mt-4 font-semibold">{d.title}</h3>
+                <CardHeading className="mt-4 font-semibold">{d.title}</CardHeading>
                 <p className="mt-2 text-sm text-muted">{d.description}</p>
               </Reveal>
             );
