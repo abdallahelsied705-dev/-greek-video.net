@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Syne } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import CookieConsent from "@/components/CookieConsent";
@@ -162,6 +163,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CookieConsent />
         <SocialProofToast />
         <WelcomeOfferModal />
+        <Analytics />
       </body>
     </html>
   );
