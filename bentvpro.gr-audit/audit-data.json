@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "health_score": 85,
+    "business_type": "IPTV subscription service (Greece & Cyprus)",
+    "top_findings": [
+      "Legal-page canonicals pointed to the homepage (fixed)",
+      "No security headers (fixed)",
+      "Site not yet deployed or indexed; no Search Console/analytics",
+      "Placeholder testimonials; no AggregateRating schema",
+      "X-Powered-By exposed (fixed); homepage meta description >160 chars"
+    ],
+    "quick_wins": [
+      "Self-referential canonicals on legal pages (done)",
+      "Security headers via next.config.ts (done)",
+      "Trim homepage meta description to <=160 chars",
+      "Verify GSC/Bing and submit sitemap on deploy",
+      "Collect real reviews to add AggregateRating schema"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 78,
+      "what_works": [
+        "robots.txt allows all + explicit AI crawlers, host + sitemap directives",
+        "Valid sitemap.xml (17 URLs) with priority/changefreq/lastmod",
+        "lang=el + hreflang (el, el-GR, el-CY, x-default)",
+        "SSR HTML, one H1 per page, strong caching + ETag, PWA manifest"
+      ],
+      "findings": [
+        {"title": "Legal-page canonicals point to homepage", "severity": "High", "description": "/cookies, /dmca, /politiki-epistrofon, /apopoiisi-efthinon, /oroi-chrisis, /politiki-aporritou inherited the root layout canonical (https://bentvpro.gr) instead of self-referential URLs.", "recommendation": "Add alternates.canonical to each legal page. Fixed during audit."},
+        {"title": "Missing security headers", "severity": "High", "description": "No HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, or frame-ancestors/CSP.", "recommendation": "Add headers() in next.config.ts. Fixed during audit."},
+        {"title": "X-Powered-By exposed", "severity": "Low", "description": "Response advertises Next.js.", "recommendation": "Set poweredByHeader:false. Fixed during audit."},
+        {"title": "Host canonicalization on deploy", "severity": "Info", "description": "www vs apex and HTTPS not yet enforced (domain not live).", "recommendation": "Configure single host + HTTPS redirect in Vercel."}
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 80,
+      "what_works": [
+        "Unique keyword-aligned titles/descriptions on every page",
+        "Substantive copy (~5.5k words home; 4 blog articles ~1.1k words each)",
+        "Strong Greek entity relevance and FAQ coverage"
+      ],
+      "findings": [
+        {"title": "E-E-A-T gaps", "severity": "Medium", "description": "No named author/bio, no About page, testimonials are placeholder.", "recommendation": "Add About page, real reviews, visible response-time proof."},
+        {"title": "/kanalia overlaps home benefits", "severity": "Low", "description": "Channels page renders the Benefits section.", "recommendation": "Build a distinct itemized channel/category page."},
+        {"title": "Homepage meta description >160 chars", "severity": "Low", "description": "~175 chars; truncates in SERP.", "recommendation": "Trim to <=160."}
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 90,
+      "what_works": ["One H1/page + logical H2s", "Rich internal linking + breadcrumbs", "Clean Greek slugs", "Correct canonicals on content pages"],
+      "findings": [
+        {"title": "Visible breadcrumbs", "severity": "Low", "description": "Breadcrumbs are JSON-LD; blog has partial visible trail.", "recommendation": "Add visible breadcrumb UI sitewide."}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": ["Organization+ContactPoint+sameAs, WebSite, Service+Offers, FAQPage on home", "Product+Offer+Breadcrumb on /times", "Blog+BlogPosting+Breadcrumb on blog"],
+      "findings": [
+        {"title": "No AggregateRating/Review", "severity": "Medium", "description": "Withheld because reviews are placeholder (fabricated review snippets violate Google policy).", "recommendation": "Add once real reviews exist."},
+        {"title": "Tighter entity graph", "severity": "Low", "description": "Offers lack priceValidUntil / @id links.", "recommendation": "Add priceValidUntil and @id references."}
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 85,
+      "what_works": ["Static prerender + aggressive caching", "next/image responsive WebP/AVIF, 2 hero images", "Self-hosted font via next/font", "Animations gated by prefers-reduced-motion"],
+      "findings": [
+        {"title": "Field/lab CWV not measured", "severity": "Info", "description": "Tooling blocks localhost; domain not live.", "recommendation": "Run PageSpeed/CrUX after deploy."},
+        {"title": "LCP image priority", "severity": "Low", "description": "Verify hero is LCP.", "recommendation": "Add priority to the above-the-fold hero image."}
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 92,
+      "what_works": ["llms.txt with key facts/pricing/contact", "AI crawlers explicitly allowed incl. Google-Extended", "FAQPage + self-contained factual passages", "Clear entity + ContactPoint + sameAs"],
+      "findings": [
+        {"title": "Expand Q-shaped content + Speakable", "severity": "Low", "description": "More question-shaped H2s and Speakable improve AI extractability.", "recommendation": "Add Speakable and grow the blog; build off-site brand mentions."}
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 90,
+      "what_works": ["All <img> have correct alt (1 descriptive, 1 decorative)", "next/image responsive + modern formats", "Dimensions set (no CLS)"],
+      "findings": [
+        {"title": "Generic OG image / icon", "severity": "Low", "description": "Auto-generated TV tile, not a brand logo.", "recommendation": "Add branded OG image + real logo."}
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Before launch", "timeframe": "Week 1", "items": ["Legal canonicals (done)", "Security headers (done)", "Disable X-Powered-By (done)", "Trim home meta description", "Deploy to Vercel + attach domain + HTTPS/single host"]},
+      {"name": "Phase 2: At/after deploy", "timeframe": "Weeks 2-3", "items": ["Verify GSC + Bing, submit sitemap", "Add analytics via cookie-consent", "Re-run PageSpeed/CrUX live, hero priority", "Add About page"]},
+      {"name": "Phase 3: Content & authority", "timeframe": "Month 2", "items": ["Real reviews + AggregateRating schema", "Itemized channels page", "More question-shaped blog posts", "Off-page brand mentions", "Branded OG/logo"]},
+      {"name": "Phase 4: Monitoring", "timeframe": "Ongoing", "items": ["Track GR/CY IPTV keywords", "Watch field CWV in GSC", "Monitor AI-engine citations", "Quarterly re-audit against live domain"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
